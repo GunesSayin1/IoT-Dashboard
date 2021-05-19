@@ -8,7 +8,7 @@ import json
 #Optionally as a more secure option these files can be read from pem file.
 key = b'\xf8\xfe]\xad\xa5I\xcd\x83\xdf\xfd\xc9\x14\nI\xba\x01'
 iv = b'\xde\xce\xa4@B\xeaC\xd4\x03\xe1?\xb8\x0b{>I'
-decryptor = maes.new(key, maes.MODE_CBC, IV=iv) #Initialize the AES-256-CBC class from library
+decryptor = maes.new(key, maes.MODE_CBC, IV=iv) #Initialize the AES-128-CBC class from library
 
 def array_tostring(array_data):
   _string = ""
