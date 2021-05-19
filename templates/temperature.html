@@ -1,0 +1,302 @@
+{% extends 'base.html'%} {% block head %}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>
+    Temperature Analytics
+</title>
+<!--     Fonts and icons     -->
+<script src="https://kit.fontawesome.com/3daf4ba0b9.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../static/css/weather-icons.css" />
+<link rel="stylesheet" href="../static/css/weather-icons-wind.css" />
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> {% endblock %} {% block body %}
+<div class="wrapper" style="overflow-x:hidden;">
+    <div class="main-panel" style="overflow-x:hidden;border:0px;">
+        <!-- End Navbar -->
+        <br>
+        <div class="row justify-content-center align-items-center">
+
+
+            <i class="fas fa-arrow-circle-left fa-4x" style="position:absolute;top:3%;left:4%;color:#FC7449;cursor:pointer;" id="backarrow"></i>
+            <div class="col col-xl-8" style="">
+                <div class="card" style="border:px solid #FC8059;border-radius: 15px;filter: drop-shadow(0px 10px 9px rgba(74, 93, 135, 0.25))">
+
+                    <h2 class="card-title" style="text-align: center;margin-top:1em;font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 34px;
+line-height: 21px;
+text-align: center;
+
+color:#FC8059 ;"> <i class="fas fa-thermometer-three-quarters"></i> Temperature
+
+
+
+                    </h2>
+                    <div class="card-body" style="justify-content: center; align-items:center;text-align:center;margin:0 auto;">
+                        <div id="gauge" style="width:400px; height:320px; justify-content: center; align-items:center;"></div>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row justify-content-center" style="">
+            <div class="card-deck">
+                <div class="card" style="background: #FC8059;
+box-shadow: 0px 10px 5px 4px rgba(74, 93, 135, 0.25);
+border-radius: 10px;width:18em;margin-right:22em;">
+                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:1.5em;margin-left:1.5em;">
+<path d="M35.0253 11.4595C32.3668 8.0665 29.6172 4.563 27.4007 0.7995C27.1082 0.3055 26.5753 0 26 0C25.4247 0 24.8918 0.3055 24.6025 0.7995C22.386 4.55975 19.6365 8.0665 16.978 11.4563C11.5895 18.3268 6.5 24.817 6.5 32.5C6.5 43.2543 15.2457 52 26 52C36.7543 52 45.5 43.2543 45.5 32.5C45.5 24.8203 40.4138 18.33 35.0253 11.4595ZM26 48.75C17.0398 48.75 9.75 41.4602 9.75 32.5C9.75 25.9382 14.5015 19.8803 19.5358 13.4615C21.7328 10.66 23.9882 7.78375 26 4.70275C28.0118 7.78375 30.2673 10.6633 32.4643 13.4648C37.4985 19.8803 42.25 25.9415 42.25 32.5C42.25 41.4602 34.9602 48.75 26 48.75Z" fill="white"/>
+<path d="M21.125 19.5C18.4372 19.5 16.25 21.6872 16.25 24.375C16.25 27.0628 18.4372 29.25 21.125 29.25C23.8128 29.25 26 27.0628 26 24.375C26 21.6872 23.8128 19.5 21.125 19.5ZM21.125 26C20.228 26 19.5 25.272 19.5 24.375C19.5 23.478 20.228 22.75 21.125 22.75C22.022 22.75 22.75 23.478 22.75 24.375C22.75 25.272 22.022 26 21.125 26Z" fill="white"/>
+<path d="M30.875 35.75C28.1872 35.75 26 37.9372 26 40.625C26 43.3128 28.1872 45.5 30.875 45.5C33.5628 45.5 35.75 43.3128 35.75 40.625C35.75 37.9372 33.5628 35.75 30.875 35.75ZM30.875 42.25C29.9812 42.25 29.25 41.5188 29.25 40.625C29.25 39.7312 29.9812 39 30.875 39C31.7688 39 32.5 39.7312 32.5 40.625C32.5 41.5188 31.7688 42.25 30.875 42.25Z" fill="white"/>
+<path d="M35.2721 23.2278C34.6383 22.594 33.6081 22.594 32.9743 23.2278L16.7243 39.4777C16.0906 40.1115 16.0906 41.1417 16.7243 41.7755C17.0428 42.0907 17.4588 42.25 17.8748 42.25C18.2908 42.25 18.7068 42.0907 19.0221 41.7755L35.2721 25.5255C35.9058 24.8918 35.9058 23.8615 35.2721 23.2278Z" fill="white"/>
+</svg>
+                    <div class="card-body">
+
+                        <h4 class="card-title" style="text-align: center;margin-top:1em;font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 21px;
+text-align: center;
+
+color: #FFFFFF;">Humidity</h4>
+                        <p class="card-text" style="font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 21px;
+line-height: 27px;
+text-align: center;
+color: #FFFFFF;">{{value[1]}}%</p>
+                        <button class="btn d-flex d-xl-flex flex-column flex-grow-0 flex-shrink-1 flex-fill justify-content-center align-self-end order-6" type="button" style="margin-right:1em;background: #FFFFFF;
+box-shadow: 0px 5px 4px rgba(85, 90, 102, 0.25);
+border-radius: 13px;color:#FC7449" id="humButton">
+  <i class="fas fa-arrow-right fa-2x"></i>
+</button>
+                    </div>
+                </div>
+                <div class="card" style="background: #FC8059;
+box-shadow: 0px 10px 5px 4px rgba(74, 93, 135, 0.25);
+border-radius: 10px;max-width:15em;">
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:1.5em;margin-left:1.5em;">
+<path d="M44.3024 11.7678C41.6491 11.7678 39.0484 12.6186 36.9795 14.1634C36.2729 14.691 36.16 15.6512 36.7271 16.3083C37.2945 16.9653 38.3271 17.0704 39.0336 16.5428C40.5222 15.4314 42.3934 14.8193 44.3024 14.8193C48.9432 14.8193 52.7187 18.3305 52.7187 22.6464C52.7187 26.9622 48.9431 30.4734 44.3024 30.4734H13.453C12.5469 30.4734 11.8124 31.1565 11.8124 31.9991C11.8124 32.8418 12.5469 33.5249 13.453 33.5249H44.3024C50.7525 33.5249 56 28.6448 56 22.6464C56 16.6479 50.7524 11.7678 44.3024 11.7678Z" fill="white"/>
+<path d="M10.3098 27.4322H27.8357C28.7419 27.4322 29.4764 26.749 29.4764 25.9064C29.4764 25.0638 28.7419 24.3806 27.8357 24.3806H10.3098C9.40375 24.3806 8.66919 25.0638 8.66919 25.9064C8.66919 26.749 9.40375 27.4322 10.3098 27.4322Z" fill="white"/>
+<path d="M27.376 36.5868H1.64062C0.734562 36.5868 0 37.2699 0 38.1125C0 38.9552 0.734562 39.6383 1.64062 39.6383H27.376C31.0975 39.6383 34.1252 42.4539 34.1252 45.9149C34.1252 49.3758 31.0975 52.1914 27.376 52.1914C25.8451 52.1914 24.3447 51.7005 23.1509 50.8093C22.4444 50.2818 21.4118 50.3867 20.8445 51.0438C20.2771 51.7009 20.3901 52.6612 21.0967 53.1887C22.8709 54.5133 25.1009 55.2428 27.376 55.2428C32.9068 55.2428 37.4065 51.0583 37.4065 45.9148C37.4065 40.7712 32.9068 36.5868 27.376 36.5868Z" fill="white"/>
+<path d="M1.64063 27.4322H3.85383C4.75989 27.4322 5.49445 26.749 5.49445 25.9064C5.49445 25.0638 4.75989 24.3806 3.85383 24.3806H1.64063C0.734563 24.3806 0 25.0638 0 25.9064C0 26.749 0.734563 27.4322 1.64063 27.4322Z" fill="white"/>
+<path d="M21.4375 44.1858C21.4375 43.3431 20.7029 42.66 19.7969 42.66H9.95312C9.04706 42.66 8.3125 43.3431 8.3125 44.1858C8.3125 45.0284 9.04706 45.7115 9.95312 45.7115H19.7969C20.703 45.7115 21.4375 45.0284 21.4375 44.1858Z" fill="white"/>
+<path d="M10.2929 22.1927C10.6834 22.5832 11.3166 22.5832 11.7071 22.1927L18.0711 15.8287C18.4616 15.4382 18.4616 14.805 18.0711 14.4145C17.6805 14.024 17.0474 14.024 16.6569 14.4145L11 20.0714L5.34315 14.4145C4.95262 14.024 4.31946 14.024 3.92893 14.4145C3.53841 14.805 3.53841 15.4382 3.92893 15.8287L10.2929 22.1927ZM10 0.242798V21.4856H12V0.242798L10 0.242798Z" fill="white"/>
+<path d="M27.2929 21.9499C27.6834 22.3404 28.3166 22.3404 28.7071 21.9499L35.0711 15.5859C35.4616 15.1954 35.4616 14.5623 35.0711 14.1717C34.6805 13.7812 34.0474 13.7812 33.6569 14.1717L28 19.8286L22.3431 14.1717C21.9526 13.7812 21.3195 13.7812 20.9289 14.1717C20.5384 14.5623 20.5384 15.1954 20.9289 15.5859L27.2929 21.9499ZM27 1.90735e-06V21.2428H29V1.90735e-06L27 1.90735e-06Z" fill="white"/>
+</svg>
+                    <div class="card-body">
+
+                        <h4 class="card-title" style="text-align: center;margin-top:1em;font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 21px;
+text-align: center;
+
+color: #FFFFFF;">Pressure</h4>
+                        <p class="card-text" style="font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 21px;
+line-height: 27px;
+text-align: center;
+color: #FFFFFF;">{{value[2]}} psi</p>
+                        <button class="btn d-flex d-xl-flex flex-column flex-grow-0 flex-shrink-1 flex-fill justify-content-center align-self-end order-6" type="button" style="margin-right:1em;background: #FFFFFF;
+box-shadow: 0px 5px 4px rgba(85, 90, 102, 0.25);
+border-radius: 13px;color:#FC7449" id="presButton">
+  <i class="fas fa-arrow-right fa-2x"></i>
+</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- TEMPERATURE WHITE -->
+            <!-- <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:1.5em;margin-left:1.5em;">
+<path d="M34.6666 29.3102V8.66663C34.6666 3.8802 30.7864 0 26 0C21.2136 0 17.3334 3.8802 17.3334 8.66663V29.3101C14.6738 31.6905 13 35.1499 13 39C13 46.1798 18.8203 52 26 52C33.1797 52 39 46.1798 39 39C39 35.1499 37.3263 31.6905 34.6666 29.3102ZM26 47.6666C21.2136 47.6666 17.3334 43.7864 17.3334 39C17.3334 36.4978 18.3938 34.1766 20.2233 32.5391L21.6667 31.2472V8.66663C21.6667 6.27341 23.6069 4.33327 26.0001 4.33327C28.3933 4.33327 30.3335 6.27331 30.3335 8.66663V31.2472L31.7769 32.5391C33.6064 34.1766 34.6668 36.4977 34.6668 39C34.6666 43.7864 30.7864 47.6666 26 47.6666Z" fill="white"/>
+<path d="M28.1667 17.3334H23.8334V43.3334H28.1667V17.3334Z" fill="white"/>
+<path d="M26 45.5C29.5899 45.5 32.5 42.5899 32.5 39C32.5 35.4101 29.5899 32.5 26 32.5C22.4101 32.5 19.5 35.4101 19.5 39C19.5 42.5899 22.4101 45.5 26 45.5Z" fill="white"/>
+</svg> -->
+
+
+
+
+        </div>
+
+
+        <!-- <button type="btn" class="btn btn-lg" style="width:50%;margin-left:auto;margin-right:1em;margin-bottom:1em;background:#ffffff;box-shadow: 0px 5px 4px rgba(85, 90, 102, 0.25);
+border-radius: 13px;">
+
+<p style="margin-left:auto; text-align:left;font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+color: #FC8059;">Analytics
+
+
+</p>
+
+<svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 27H1.44444C0.6467 27 0 26.3284 0 25.5V0H2.88889V24H26V27ZM7.761 19.5L5.77778 17.484L12.792 10.35C13.3442 9.79272 14.2231 9.79272 14.7752 10.35L17.992 13.6215L24.0168 7.5L26 9.516L18.9858 16.65C18.4336 17.2073 17.5547 17.2073 17.0026 16.65L13.7843 13.377L7.76244 19.5H7.761Z" fill="#FC7449"/>
+</svg>
+
+</button> -->
+
+
+
+
+
+
+        <div class="col" style="justify-content:center;align-items:center;">
+            <div id="tempgraph" style="justify-content:center;align-items:center;align-self:center;filter: drop-shadow(0px 5px 4px rgba(74, 93, 135, 0.25));margin-top:1.2em;border-radius:15px;"></div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<!-- Resources -->
+
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="../static/js/raphael-2.1.4.min.js"></script>
+<script src="../static/js/justgage.js"></script>
+
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<!-- Just Gage -->
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var g = new JustGage({
+            id: "gauge",
+            value: '{{dial}}',
+            symbol: '°C',
+            min: 10,
+            max: 35,
+            valueFontColor: "#FC7449",
+            valueFontFamily: "Poppins",
+            levelColors: ['#FC7449', '#feb6a0', '#FC825C']
+        });
+    })
+    async function requestData() {
+        const result = await fetch('/temperature.json',{
+      method: 'GET',
+      mode:'no-cors',
+      dataType: 'json'
+    });
+        if (result.ok) {
+            const data = await result.json();
+	    const x = data[data.length -1]["x"]
+            const y = data[data.length -1]["y"]
+	    console.log(x)
+            console.log(y)
+            console.log(data[data.length - 1]);
+            const point = [x, y];
+            const series = chart.series[0]// shift if the series is longer than 20
+            // add the point
+            console.log(point);
+            console.log(series)
+            chart.series[0].addPoint(point, true,false);
+            // call it again after one second
+            setTimeout(requestData, 1000);
+        }
+    }
+
+window.addEventListener('load', function () {
+$.getJSON('/temperature.json',function(data){
+    console.log(data)
+            chart = new Highcharts.Chart({
+                chart: {
+                    zoomType: "x",
+                    renderTo: 'tempgraph',
+                    defaultSeriesType: 'spline',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title: {
+                    text: 'Live random data'
+                },
+                xAxis: {
+                    type: 'datetime',
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: "#FC7449",
+                    },
+                },
+                navigator: {
+                    enabled: true,
+                    series: {
+                        color: '#fc8059',
+                        lineWidth: 2
+                    }
+                },
+                series: [{
+                    name: 'Temperature',
+                    data: data,
+                    showInNavigator: true
+                }]
+            });
+        })
+    });
+</script>
+
+<script>
+    document.querySelector("#backarrow").onclick = function() {
+        location.href = '{{ url_for ("index")}}';
+    };
+</script>
+
+<script>
+    document.querySelector("#humButton").onclick = function() {
+        location.href = '{{ url_for ("humidity")}}';
+    };
+</script>
+
+<script>
+    document.querySelector("#presButton").onclick = function() {
+        location.href = '{{ url_for ("pressure")}}';
+    };
+</script>
+
+
+
+{% endblock %}
