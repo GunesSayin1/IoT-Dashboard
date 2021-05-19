@@ -26,9 +26,6 @@ def on_message(client, userdata, message):
     cursor.execute(sql, (decrypted[5], decrypted[2]))
     db_conn.commit()
     cursor.close()
-    # subprocess.call('python C:\\Users\Gunes\\Documents\\IoT_Project_Pi\\get_MQTT_data.py')
-    # run("python " + "C:\\Users\\Gunes\\Documents\\IoT_Project_Pi\\get_MQTT_data.py", check=True)
-    # subprocess.call(sys.executable + ' "' + os.path.realpath(__file__) + '"')
     os.execv(__file__, sys.argv)
     return decrypted
 
@@ -38,7 +35,7 @@ def on_message(client, userdata, message):
 
 def main():
     client=mqtt.Client()
-    client.username_pw_set(username="gunes", password="123asdss")
+    client.username_pw_set(username="", password="")
     client.on_connect = on_connect
     client.on_message = on_message
     client.connect(MQTT_ADDRESS, 1883)
